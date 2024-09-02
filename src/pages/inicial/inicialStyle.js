@@ -22,6 +22,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 20,
     margin:20
+  },
+  btnBottom:{
+    flexDirection:'row',
+    gap:20,
+    marginTop:50,
+    
+  },
+  logo:{
+    marginBottom: 30
   }
  
 });

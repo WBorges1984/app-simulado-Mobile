@@ -5,10 +5,11 @@ import logo from "../../assets/cart.png";
 import Button from "../../components/button/ButtonCustom";
 import ButtonBottom from "../../components/ButtonBottom/ButtonBottom";
 
-export default function Inicial() {
+
+export default function Inicial({navigation}) {
   return (
     <View style={styles.container}>
-      <Image source={logo} />
+      <Image source={logo} style={styles.logo}/>
       <View style={styles.buttons}>
         <View style={styles.btn}>
           <Button texto={"Simulado"} />
@@ -19,9 +20,9 @@ export default function Inicial() {
           <Button texto={"Simulado "} />
         </View>
       </View>
-      <View>
-        <ButtonBottom texto={"Logar"}/>
-        <ButtonBottom texto={"Cadastrar"} textGreen/>
+      <View style={styles.btnBottom}>
+        <ButtonBottom texto={"Logar"} colorBackBlue onPress={()=> navigation.navigate("Login")}/>
+        <ButtonBottom texto={"Cadastrar"} textGreen colorBackTrans onPress={()=> navigation.navigate("Cadastro")}/>
       </View>
     </View>
   );

@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
         color:COLORS.blue
     },
     item:{
-        backgroundColor:COLORS.grayLight
+        backgroundColor:COLORS.grayLight,
+        
     }
 });
 

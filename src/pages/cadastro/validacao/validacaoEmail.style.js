@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../constants/theme";
+import { COLORS, FONT_SIZE } from "../../../constants/theme";
 
 
 const styles = StyleSheet.create({    
@@ -24,6 +24,22 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems:"center",
         justifyContent:"center"
+    },
+    btnDown:{
+        flexDirection:"row",
+        width:"100%",
+        justifyContent: "space-between",
+        marginTop:10,
+        paddingLeft:10,
+        paddingRight:10,  
+    },
+    emailWrong:{
+        color: COLORS.red,
+        fontSize: FONT_SIZE[16]
+    },
+    reeviarCodigo:{
+        color:COLORS.green,
+        fontSize: FONT_SIZE[16]
     }
 });
 

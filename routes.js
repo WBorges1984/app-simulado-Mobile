@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Inicial from "./src/pages/inicial/Inicial";
 import Login from "./src/pages/Login/Login";
 import Cadastro from "./src/pages/cadastro/Cadastro";
+import ValidacaoEmail from "./src/pages/cadastro/validacao/validacaoEmail";
+import InicialLogado from "./src/pages/inicialLogado/InicialLogado";
 
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +27,18 @@ function Routes() {
         />
         
         <Stack.Screen name="Cadastro" component={Cadastro}
+          options={{
+            headerShown: false,
+          }}
+        />
+        
+        <Stack.Screen name="ValidacaoEmail" component={ValidacaoEmail}
+          options={{
+            headerShown: false,
+          }}
+        />
+        
+        <Stack.Screen name="InicialLogado" component={InicialLogado}
           options={{
             headerShown: false,
           }}

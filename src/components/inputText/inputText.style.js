@@ -7,7 +7,7 @@ export const styles = {
         padding: 10,
         borderRadius: 6,
         borderWidth: 1,
-        borderColor: COLORS.gray
+        borderColor: COLORS.grayMedium
     },
     label: {
         marginLeft: 5,

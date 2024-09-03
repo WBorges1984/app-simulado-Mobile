@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
         position:"absolute",
         bottom: 0,
         marginBottom:10
+    },
+    btn:{
+        width: "100%",
+        alignItems:"center",
+        justifyContent:"center"
     }
 });
 

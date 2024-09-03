@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.grayDark,
         borderRadius: 6,
     },
+    btnFullWidth:{
+        width:"100%"
+    }
   })
 
 export default styles;

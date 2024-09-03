@@ -1,15 +1,17 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
-import styles from "./inicialStyle";
+import styles from "./inicialLogado.Style";
 import logo from "../../assets/cart.png";
 import Button from "../../components/button/ButtonCustom";
 import ButtonBottom from "../../components/ButtonBottom/ButtonBottom";
 
 
-export default function Inicial({navigation}) {
+export default function InicialLogado({navigation}) {
+  const name = 'Willian';
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo}/>
+      <Text style={styles.name}>Bem vindo {name}</Text>
       <View style={styles.buttons}>
         <View style={styles.btn}>
           <Button texto={"Simulado"} />
@@ -17,12 +19,11 @@ export default function Inicial({navigation}) {
         </View>
         <View style={styles.btn}>
           <Button texto={"Desempenho"} />
-          <Button texto={"Resultado"} />
+          <Button texto={"Resultado "} />
         </View>
       </View>
-      <View style={styles.btnBottom}>
-        <ButtonBottom texto={"Logar"} colorBackBlue onPress={()=> navigation.navigate("Login")}/>
-        <ButtonBottom texto={"Cadastrar"} textGreen colorBackTrans onPress={()=> navigation.navigate("Cadastro")}/>
+      <View style={styles.deslogar}>
+        <ButtonBottom texto={"Logof"} fullW colorBackGray onPress={()=> navigation.navigate("Login")}/>
       </View>
     </View>
   );

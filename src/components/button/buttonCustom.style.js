@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     texto: {
         fontSize: FONT_SIZE[24],
         color: COLORS.white,
-        padding: 14,
+        padding: 10,
         textAlign: "center"
     },
     textoErro:{

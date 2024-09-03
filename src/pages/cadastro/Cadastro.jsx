@@ -13,18 +13,18 @@ export default function Cadastro({ navigation }) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
-      <Text>Acesse sua conta</Text>
+      <Text>Crie sua conta</Text>
       <View style={styles.input}>
         <InputText label="Nome" />
-        <InputText label="E-mail" isPassword />
+        <InputText label="E-mail" />
         <InputText label="Senha" isPassword />
         <InputText label="ConfirmaSenha" isPassword />
       </View>
-      <View>
-        <ButtonBottom colorBackBlue texto="Próximo" />
+      <View style={styles.btn}>
+        <ButtonBottom fullW colorBackBlue texto="Próximo" onPress={()=>navigation.navigate("ValidacaoEmail")}/>
       </View>
       <View style={styles.buttonFooter}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("Login")}>
           <Text>Acessar minha conta</Text>
         </TouchableOpacity>
       </View>

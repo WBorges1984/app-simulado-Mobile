@@ -18,11 +18,11 @@ export default function Login({ navigation }) {
         <InputText label="E-mail" />
         <InputText label="Senha" isPassword />
       </View>
-      <View>
-        <ButtonBottom colorBackBlue texto="Acessar" />
+      <View style={styles.btn}>
+        <ButtonBottom fullW colorBackBlue texto="Acessar" />
       </View>
       <View style={styles.buttonFooter}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("Cadastro")}>
           <Text>Criar minha conta</Text>
         </TouchableOpacity>
       </View>

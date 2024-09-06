@@ -19,7 +19,7 @@ export default function Login({ navigation }) {
         <InputText label="Senha" isPassword />
       </View>
       <View style={styles.btn}>
-        <ButtonBottom fullW colorBackBlue texto="Acessar" />
+        <ButtonBottom fullW colorBackBlue texto="Acessar" onPress={()=>navigation.navigate("InicialLogado")}/>
       </View>
       <View style={styles.buttonFooter}>
         <TouchableOpacity onPress={()=>navigation.navigate("Cadastro")}>

@@ -18,8 +18,8 @@ export default function InicialLogado({navigation}) {
           <Button texto={"Simulado"} textoErro={"Com erros"}/>
         </View>
         <View style={styles.btn}>
-          <Button texto={"Desempenho"} />
-          <Button texto={"Resultado "} />
+          <Button texto={"Desempenho"} onPress={()=> navigation.navigate("Desempenho")}/>
+          <Button texto={"Resultado "} onPress={()=> navigation.navigate("Resultado")}/>
         </View>
       </View>
       <View style={styles.deslogar}>

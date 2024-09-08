@@ -62,7 +62,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         marginBottom: 20,
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        
+    },
+    containerConteudo:{
+        marginTop: 40,
+        padding: 20
     },
     mediaProb:{
         marginTop: 50

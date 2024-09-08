@@ -14,7 +14,7 @@ export default function InicialLogado({navigation}) {
       <Text style={styles.name}>Bem vindo {name}</Text>
       <View style={styles.buttons}>
         <View style={styles.btn}>
-          <Button texto={"Simulado"} />
+          <Button texto={"Simulado"} onPress={()=> navigation.navigate("pagePergunta")}/>
           <Button texto={"Simulado"} textoErro={"Com erros"}/>
         </View>
         <View style={styles.btn}>
@@ -23,7 +23,7 @@ export default function InicialLogado({navigation}) {
         </View>
       </View>
       <View style={styles.deslogar}>
-        <ButtonBottom texto={"Logof"} fullW colorBackGray onPress={()=> navigation.navigate("Login")}/>
+        <ButtonBottom texto={"Logof"} fullW colorBackGray textWhite onPress={()=> navigation.navigate("Login")}/>
       </View>
     </View>
   );

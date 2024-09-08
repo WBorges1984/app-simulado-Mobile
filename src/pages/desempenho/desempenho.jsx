@@ -25,7 +25,7 @@ export default function Desempenho({navigation}) {
       <Image source={logo} style={styles.logo} />
       <Text style={styles.title}>Desempenho</Text>
 
-      <View >
+      <View style={styles.containerConteudo}>
         <View style={styles.texto1}>
           <Text style={styles.texto}>Até o momento </Text>
           <Text style={styles.varAzul}>{qtdProvas}</Text>
@@ -67,7 +67,7 @@ export default function Desempenho({navigation}) {
             </View>
       </View>
         <View style={styles.btnBottom}>
-            <ButtonBottom colorBackBlue texto="Menu principal" fullW onPress={()=>navigation.navigate("InicialLogado")}/>
+            <ButtonBottom colorBackBlue texto="Menu principal" textWhite fullW onPress={()=>navigation.navigate("InicialLogado")}/>
         </View>
     </SafeAreaView>
   );

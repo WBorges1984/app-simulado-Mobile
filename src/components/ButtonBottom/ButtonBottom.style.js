@@ -27,14 +27,21 @@ const styles = StyleSheet.create({
         textAlign:'center',
         justifyContent:'center'
     },
+    textBlue:{
+        color: COLORS.blue,
+        fontSize: FONT_SIZE[20],
+        textAlign:'center',
+        justifyContent:'center'
+    },
     colorBackBlue:{
-        width: 162,
+        // width: 162,
+        width: "auto",
         height:31,
         backgroundColor: COLORS.blue,
         borderRadius: 6,
     },
     colorBackTrans:{
-        width: 162,
+        width: "auto",
         height:31,
         borderWidth:2,
         borderStyle:'solid',
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
     },
     colorBackGray:{
-        width: 162,
+        width: "auto",
         height:31,
         backgroundColor: COLORS.grayDark,
         borderRadius: 6,

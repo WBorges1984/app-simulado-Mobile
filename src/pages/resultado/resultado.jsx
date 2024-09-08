@@ -53,6 +53,7 @@ export default function Resultado({navigation}) {
   // Componente para renderizar cada item da lista
   const renderItem = ({ item }) => (
     <View style={styles.item}>
+      
       <View style={styles.ItemId}>
         <ButtonBottom texto={item.id} fullW/>
       </View>
@@ -79,7 +80,7 @@ export default function Resultado({navigation}) {
         keyExtractor={(item) => item.id} // Use a chave única correta
       />
       <View style={styles.btn}>
-        <ButtonBottom colorBackBlue texto="Menu principal" fullW onPress={()=>navigation.navigate("InicialLogado")}/>
+        <ButtonBottom colorBackBlue texto="Menu principal" textWhite fullW onPress={()=>navigation.navigate("InicialLogado")}/>
       </View>
     </View>
   );

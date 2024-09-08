@@ -55,7 +55,7 @@ export default function Resultado({navigation}) {
     <View style={styles.item}>
       
       <View style={styles.ItemId}>
-        <ButtonBottom texto={item.id} fullW/>
+        <ButtonBottom textWhite texto={item.id} fullW/>
       </View>
       <View style={parseInt(item.percent) > 69 ? styles.dadosItemGreen : styles.dadosItemRed}>
         <View>
@@ -80,7 +80,7 @@ export default function Resultado({navigation}) {
         keyExtractor={(item) => item.id} // Use a chave única correta
       />
       <View style={styles.btn}>
-        <ButtonBottom colorBackBlue texto="Menu principal" textWhite fullW onPress={()=>navigation.navigate("InicialLogado")}/>
+        <ButtonBottom  colorBackBlue texto="Menu principal" textWhite fullW onPress={()=>navigation.navigate("InicialLogado")}/>
       </View>
     </View>
   );

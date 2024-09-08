@@ -21,7 +21,7 @@ export default function Cadastro({ navigation }) {
         <InputText label="ConfirmaSenha" isPassword />
       </View>
       <View style={styles.btn}>
-        <ButtonBottom fullW colorBackBlue texto="Próximo" onPress={()=>navigation.navigate("ValidacaoEmail")}/>
+        <ButtonBottom textWhite fullW colorBackBlue texto="Próximo" onPress={()=>navigation.navigate("ValidacaoEmail")}/>
       </View>
       <View style={styles.buttonFooter}>
         <TouchableOpacity onPress={()=>navigation.navigate("Login")}>

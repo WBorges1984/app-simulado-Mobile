@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     logo:{
         width: 150,
         height: 48,
+        marginTop: 25,
      },
     textoPerc:{
         color: COLORS.white,
@@ -22,13 +23,13 @@ const styles = StyleSheet.create({
     topo:{
        flexDirection: "row", 
     },
-    perc:{
-        backgroundColor: COLORS.greenLight,
-    },
     txtPerc:{
+        backgroundColor: COLORS.greenLight,
         flexDirection:"row",
         padding:10,
-        alignItems:"baseline"
+        alignItems:"baseline",
+        width: "100%",
+        gap: 20
     },
     textoPerc:{
         color:COLORS.white,
@@ -47,8 +48,20 @@ const styles = StyleSheet.create({
     },  
     containerDs:{
         padding:10,
-        backgroundColor: COLORS.greenLight
+        backgroundColor: COLORS.greenLight,
+        alignItems:"center"
     
+    },
+    quadroPerguntas:{
+        width: "100%",
+        height: 111,
+        backgroundColor:COLORS.grayLight,
+        alignItems: "center"
+    },
+    linhaQuadro:{
+        flexDirection:"row",
+        padding: 5,
+        gap: 5,
     },
     pergunta:{
         flexDirection: "row",
@@ -96,7 +109,15 @@ const styles = StyleSheet.create({
     },
     txtOpPergunta:{
         fontSize: FONT_SIZE[16],
-        backgroundColor: COLORS.grayLight,
+        backgroundColor: COLORS.red,
+        width: "100%",
+        height:"auto",
+        padding: 10,
+        marginTop: 10
+    },
+    txtOpPerguntaCorreta:{
+        fontSize: FONT_SIZE[16],
+        backgroundColor: COLORS.greenLight,
         width: "100%",
         height:"auto",
         padding: 10,

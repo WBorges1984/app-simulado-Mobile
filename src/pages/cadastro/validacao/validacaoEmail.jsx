@@ -14,7 +14,7 @@ export default function ValidacaoEmail({ navigation, email }) {
         <InputText label="Digite o código" isPassword />
       </View>
       <View style={styles.btn}>
-        <ButtonBottom fullW colorBackBlue texto="Cadastrar" onPress={() => navigation.navigate("InicialLogado")}/>
+        <ButtonBottom textWhite fullW colorBackBlue texto="Cadastrar" onPress={() => navigation.navigate("InicialLogado")}/>
       </View>
       <View style={styles.btnDown}>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>

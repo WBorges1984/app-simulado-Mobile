@@ -10,18 +10,45 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
     },
-    cronometro:{
-        color: COLORS.green,
+    logo:{
+        width: 150,
+        height: 48,
+     },
+    textoPerc:{
+        color: COLORS.white,
         fontWeight:"bold",
-        fontSize: FONT_SIZE[32]
+        fontSize: FONT_SIZE[16]
     },
-    vCronometro:{
-        alignItems:"flex-end",
-        position: "absolute",
-        right: 0,
-        top: 105,
-        paddingRight: 10,
+    topo:{
+       flexDirection: "row", 
+    },
+    perc:{
+        backgroundColor: COLORS.greenLight,
+    },
+    txtPerc:{
+        flexDirection:"row",
+        padding:10,
+        alignItems:"baseline"
+    },
+    textoPerc:{
+        color:COLORS.white,
+        fontSize:FONT_SIZE[16],
         
+    },
+    numPerc:{
+        color:COLORS.white,
+        fontSize:FONT_SIZE[48],
+        fontWeight:"bold"
+    },  
+    dsPerc:{
+        color:COLORS.white,
+        fontSize:FONT_SIZE[16],
+        
+    },  
+    containerDs:{
+        padding:10,
+        backgroundColor: COLORS.greenLight
+    
     },
     pergunta:{
         flexDirection: "row",
@@ -84,7 +111,12 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         gap: 5
-    }
+    },
+    img:{
+        position:"static",
+        alignItems:"center"
+    },
+    
 });
 
 export default styles;

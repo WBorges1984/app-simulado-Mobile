@@ -7,7 +7,8 @@ import ValidacaoEmail from "./src/pages/cadastro/validacao/validacaoEmail";
 import InicialLogado from "./src/pages/inicialLogado/InicialLogado";
 import Resultado from "./src/pages/resultado/resultado";
 import Desempenho from "./src/pages/desempenho/desempenho";
-import Page from "./src/pages/pagePergunta/page";
+import Page from "./src/pages/telaPergunta/page";
+import ResultadoFinal from "./src/pages/resultadoFinal/resultadoFinal";
 
 
 const Stack = createNativeStackNavigator();
@@ -17,8 +18,6 @@ function Routes() {
     <NavigationContainer>
       <Stack.Navigator>
 
-      
-          
       <Stack.Screen name="InicialLogado" component={InicialLogado}
           options={{
             headerShown: false,
@@ -61,11 +60,18 @@ function Routes() {
           }}
         />
 
-<Stack.Screen name="pagePergunta" component={Page}
+        <Stack.Screen name="pagePergunta" component={Page}
           options={{
             headerShown: false,
           }}
         />
+
+        <Stack.Screen name="resultadoFinal" component={ResultadoFinal}
+          options={{
+            headerShown: false,
+          }}
+        />
+         
 
         
       </Stack.Navigator>

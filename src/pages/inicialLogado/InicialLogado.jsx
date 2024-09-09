@@ -1,17 +1,27 @@
 import { View, Text, StyleSheet, Image } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./inicialLogado.Style";
 import logo from "../../assets/cart.png";
 import Button from "../../components/button/ButtonCustom";
 import ButtonBottom from "../../components/ButtonBottom/ButtonBottom";
+import { AuthContext } from "../../context/AuthProvider";
 
 
 export default function InicialLogado({navigation}) {
-  const name = 'Willian';
+  const {userData, login} = useContext(AuthContext);
+  const email = userData.email;
+  
+  function Logof(){
+
+    login('')
+
+    navigation.navigate("Login")
+  }
+
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo}/>
-      <Text style={styles.name}>Bem vindo {name}</Text>
+      <Text style={styles.name}>Bem vindo {email}</Text>
       <View style={styles.buttons}>
         <View style={styles.btn}>
           <Button texto={"Simulado"} onPress={()=> navigation.navigate("pagePergunta")}/>
@@ -23,7 +33,7 @@ export default function InicialLogado({navigation}) {
         </View>
       </View>
       <View style={styles.deslogar}>
-        <ButtonBottom texto={"Logof"} fullW colorBackGray textWhite onPress={()=> navigation.navigate("Login")}/>
+        <ButtonBottom texto={"Logof"} fullW colorBackGray textWhite onPress={Logof}/>
       </View>
     </View>
   );

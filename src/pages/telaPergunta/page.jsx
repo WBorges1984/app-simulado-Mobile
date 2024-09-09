@@ -1,14 +1,22 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './page.style.js'
 import logo from "../../assets/cart.png";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ButtonBottom from '../../components/ButtonBottom/ButtonBottom.jsx';
 import gif from '../../assets/QUESTAO_1161.gif'
 import img from '../../assets/cart.png'
 import { pergunta1 } from '../../constants/data.js';
+import { AuthContext } from '../../context/AuthProvider.js';
 
 
 export default function Page({navigation}) {
+
+  const {userData, Login} = useContext(AuthContext);
+  useEffect(()=>{
+    if(userData == ''){
+      navigation.navigate("Login");
+    }
+  },[userData]);
     const pergunta={id_pergunta:'',
       dsPergunda:'',
       imgPergunta:''};

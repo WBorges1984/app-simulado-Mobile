@@ -1,6 +1,7 @@
 // src/services/api.js
 
-const BASE_URL = 'http://192.168.1.5:8082/v1';  // Substitua pela URL base da sua API
+//const BASE_URL = 'http://192.168.1.5:8082/v1';  // Substitua pela URL base da sua API
+const BASE_URL = 'http://10.1.1.101:8082/v1';  // Substitua pela URL base da sua API
 
 // Função GET
 export const apiGet = async (endpoint) => {

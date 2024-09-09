@@ -10,24 +10,30 @@ import InputText from "../../components/inputText/inputText.jsx";
 import logo from "../../assets/cart.png";
 import ButtonBottom from "../../components/ButtonBottom/ButtonBottom.jsx";
 import { apiPost } from "../../services/api.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthProvider.js";
 
 export default function Login({ navigation }) {
-  const [data, setData] = useState(null);
+ 
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
 
+  const {login} = useContext(AuthContext)
   
     const handleLogin = async () => {
       try {
         // console.log('Iniciando requisição...');
         const postData = { email: email, senha: senha };
-         console.log('Dados a serem enviados:', postData);
+         //console.log('Dados a serem enviados:', postData);
         const result = await apiPost('/usuarios/login', postData);
-         console.log('Resultado da requisição POST:', result);
+        //console.log('Resultado da requisição POST:', result);
+        login(result)
+         navigation.navigate("InicialLogado");
       } catch (error) {
         console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
+        
       }
+      
     };
 
   return (

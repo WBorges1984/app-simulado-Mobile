@@ -12,11 +12,13 @@ import { AuthContext } from '../../context/AuthProvider.js';
 export default function Page({navigation}) {
 
   const {userData, Login} = useContext(AuthContext);
+
   useEffect(()=>{
     if(userData == ''){
       navigation.navigate("Login");
     }
   },[userData]);
+  
     const pergunta={id_pergunta:'',
       dsPergunda:'',
       imgPergunta:''};

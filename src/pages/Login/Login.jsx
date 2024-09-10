@@ -15,24 +15,53 @@ import { AuthContext } from "../../context/AuthProvider.js";
 
 export default function Login({ navigation }) {
  
+  const [messageErroLogin, setMessageErroLogin] = useState('');
+  const [messageValida, setMessageValida] = useState('');
   const [email, setEmail] = useState(null);
   const [senha, setSenha] = useState(null);
 
   const {login} = useContext(AuthContext)
   
     const handleLogin = async () => {
-      try {
-        // console.log('Iniciando requisição...');
+      // if(email == ''){
+      //   return setMessage("Email não pode ser vazio")
+      // }
+
+      // if(senha == ''){
+      //   return setMessage("Senha não pode ser vazio")
+      // }
+
+      // try {
+        
+      //   const postData = { email: email, senha: senha };
+       
+      //   const result = await apiPost('/usuarios/login', postData);
+        
+      //   login(result)
+      //    navigation.navigate("InicialLogado");
+      // } catch (error) {
+      //   console.error(error.message);  // Adicione .message para uma descrição mais detalhada
+      //   //console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
+      // }
+
+      if(email == ''){
+        return setMessage("Email não pode ser vazio")
+      }
+
+      if(senha == ''){
+        return setMessage("Senha não pode ser vazio")
+      }
         const postData = { email: email, senha: senha };
-         //console.log('Dados a serem enviados:', postData);
+       
         const result = await apiPost('/usuarios/login', postData);
-        //console.log('Resultado da requisição POST:', result);
+        
         login(result)
          navigation.navigate("InicialLogado");
-      } catch (error) {
-        console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
-        
-      }
+     
+        console.error(error.message);  // Adicione .message para uma descrição mais detalhada
+        //console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
+     
+
       
     };
 
@@ -40,6 +69,7 @@ export default function Login({ navigation }) {
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
       <Text>Acesse sua conta</Text>
+      <View><Text>{messageValida != "" ? "teste": '' }</Text></View>
       <View style={styles.input}>
         <InputText label="E-mail" onChangeText={setEmail} value={email}/>
         <InputText label="Senha" isPassword onChangeText={setSenha} value={senha} />

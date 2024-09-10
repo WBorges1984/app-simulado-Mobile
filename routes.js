@@ -18,17 +18,18 @@ function Routes() {
     <NavigationContainer>
       <Stack.Navigator>
 
+        <Stack.Screen name="Inicial" component={Inicial}
+          options={{
+            headerShown: false,
+          }}
+        />
+        
       <Stack.Screen name="InicialLogado" component={InicialLogado}
           options={{
             headerShown: false,
           }}
         />
           
-        <Stack.Screen name="Inicial" component={Inicial}
-          options={{
-            headerShown: false,
-          }}
-        />
         
         <Stack.Screen name="Login" component={Login}
           options={{

@@ -9,7 +9,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 export default function InicialLogado({navigation}) {
   const {userData, login} = useContext(AuthContext);
-  const email = userData.email;
+  const nome = userData.nome;
   
   function Logof(){
 
@@ -21,7 +21,7 @@ export default function InicialLogado({navigation}) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo}/>
-      <Text style={styles.name}>Bem vindo {email}</Text>
+      <Text style={styles.name}>Bem vindo {nome}</Text>
       <View style={styles.buttons}>
         <View style={styles.btn}>
           <Button texto={"Simulado"} onPress={()=> navigation.navigate("pagePergunta")}/>

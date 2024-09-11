@@ -57,9 +57,10 @@ export default function Resultado({navigation}) {
       <View style={styles.ItemId}>
         <ButtonBottom textWhite texto={item.id} fullW/>
       </View>
+
       <View style={parseInt(item.percent) > 69 ? styles.dadosItemGreen : styles.dadosItemRed}>
         <View>
-          <Text style={styles.textoDT}>Data: {item.dt}</Text>
+          <Text style={styles.textoDT}>Data:1 {item.dt}</Text>
           <Text style={styles.textoDT}>Tempo: {item.time}min</Text>
         </View>
         <View style={styles.dadosPerc}>
@@ -67,6 +68,7 @@ export default function Resultado({navigation}) {
           <Text style={styles.textoPorcento}>{item.percent}%</Text>
         </View>
       </View>
+      
     </View>
   );
 

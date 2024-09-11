@@ -23,45 +23,19 @@ export default function Login({ navigation }) {
   const {login} = useContext(AuthContext)
   
     const handleLogin = async () => {
-      // if(email == ''){
-      //   return setMessage("Email não pode ser vazio")
-      // }
+     
 
-      // if(senha == ''){
-      //   return setMessage("Senha não pode ser vazio")
-      // }
-
-      // try {
+      try {
         
-      //   const postData = { email: email, senha: senha };
-       
-      //   const result = await apiPost('/usuarios/login', postData);
-        
-      //   login(result)
-      //    navigation.navigate("InicialLogado");
-      // } catch (error) {
-      //   console.error(error.message);  // Adicione .message para uma descrição mais detalhada
-      //   //console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
-      // }
-
-      if(email == ''){
-        return setMessage("Email não pode ser vazio")
-      }
-
-      if(senha == ''){
-        return setMessage("Senha não pode ser vazio")
-      }
         const postData = { email: email, senha: senha };
        
         const result = await apiPost('/usuarios/login', postData);
         
         login(result)
          navigation.navigate("InicialLogado");
-     
-        console.error(error.message);  // Adicione .message para uma descrição mais detalhada
-        //console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
-     
-
+      } catch (error) { console.error(error.message);  // Adicione .message para uma descrição mais detalhada
+        console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
+      }
       
     };
 

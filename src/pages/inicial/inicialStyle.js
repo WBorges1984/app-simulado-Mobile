@@ -4,7 +4,7 @@ import { COLORS } from '../../constants/theme';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
+    width: "auto",
     backgroundColor: COLORS.white,
     alignItems: 'center',
     justifyContent: 'center'
@@ -27,7 +27,10 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     gap:20,
     marginTop:50,
-    
+    marginRight:100,
+    marginLeft:100,
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   logo:{
     marginBottom: 30

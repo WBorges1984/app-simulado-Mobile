@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     ItemId:{
         backgroundColor: COLORS.blue,
         width: "auto",
+        height: 10,
         paddingBottom: 10,
         paddingTop: 10,
         paddingLeft: 20,

@@ -21,8 +21,8 @@ export default function Inicial({navigation}) {
         </View>
       </View>
       <View style={styles.btnBottom}>
-        <ButtonBottom texto={"Logar"} colorBackBlue onPress={()=> navigation.navigate("Login")}/>
-        <ButtonBottom texto={"Cadastrar"} textGreen colorBackTrans onPress={()=> navigation.navigate("Cadastro")}/>
+        <ButtonBottom texto={"Logar"} textWhite fullW colorBackBlue onPress={()=> navigation.navigate("Login")}/>
+        <ButtonBottom texto={"Cadastrar"} textGreen fullW colorBackTrans onPress={()=> navigation.navigate("Cadastro")}/>
       </View>
     </View>
   );

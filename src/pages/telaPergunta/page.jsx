@@ -18,6 +18,10 @@ export default function Page({navigation}) {
       navigation.navigate("Login");
     }
   },[userData]);
+
+  useEffect(()=>{
+    
+  },[userData]);
   
     const pergunta={id_pergunta:'',
       dsPergunda:'',

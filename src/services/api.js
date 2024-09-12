@@ -1,7 +1,9 @@
 // src/services/api.js
 
-//const BASE_URL = 'http://192.168.1.5:8082/v1';  // Substitua pela URL base da sua API
-const BASE_URL = 'http://10.1.1.101:8082/v1';  // Substitua pela URL base da sua API
+import { Alert } from "react-native";
+
+const BASE_URL = 'http://192.168.1.5:8082/v1';  
+// const BASE_URL = 'http://10.1.1.101:8082/v1';  
 
 // Função GET
 export const apiGet = async (endpoint) => {
@@ -34,14 +36,17 @@ export const apiPost = async (endpoint, body) => {
       body: JSON.stringify(body),
       
     });
-    console.log(response)
+    
     if (!response.ok) {
+      // Para requisições que não foram bem-sucedidas, lançamos um erro
       throw new Error(`Erro HTTP! status: ${response.status}`);
+      
     }
     const data = await response.json();
     return data;
+
   } catch (error) {
-    console.error('Erro na requisição POST:', error);
+    console.log('Erro na requisição POST:', error);
     throw error;
   }
 };

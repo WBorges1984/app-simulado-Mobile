@@ -4,6 +4,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from "react-native";
 import styles from "./login.style.js";
 import InputText from "../../components/inputText/inputText.jsx";
@@ -24,17 +25,30 @@ export default function Login({ navigation }) {
   
     const handleLogin = async () => {
      
-
       try {
         
         const postData = { email: email, senha: senha };
-       
+        
+        
         const result = await apiPost('/usuarios/login', postData);
         
-        login(result)
-         navigation.navigate("InicialLogado");
-      } catch (error) { console.error(error.message);  // Adicione .message para uma descrição mais detalhada
-        console.error('Erro ao enviar dados:', error.message);  // Adicione .message para uma descrição mais detalhada
+        console.log( result)
+       
+          login(result);
+          navigation.navigate("InicialLogado");
+        
+      } catch (error) { 
+        console.log('Erro ao fazer login:', error.message);
+
+      if (error.message.includes('401')) {
+        // Mostra um alerta para o erro de autenticação
+        Alert.alert("Erro de Autenticação", "E-mail ou senha inválidos. Por favor, tente novamente.");
+      } else {
+        // Trata outros erros
+        Alert.alert("Erro", "Ocorreu um erro durante o login. Tente novamente mais tarde.");
+      }  
+        
+        
       }
       
     };

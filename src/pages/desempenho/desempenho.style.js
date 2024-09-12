@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white,
         padding: 20,
-        alignItems: "center"
+        alignItems: "center",
     },
     title:{
         fontSize: FONT_SIZE[32],

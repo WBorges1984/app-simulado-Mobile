@@ -11,7 +11,7 @@ import InputText from "../../components/inputText/inputText.jsx";
 import logo from "../../assets/cart.png";
 import ButtonBottom from "../../components/ButtonBottom/ButtonBottom.jsx";
 import { apiPost } from "../../services/api.js";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider.js";
 
 export default function Login({ navigation }) {
@@ -24,7 +24,6 @@ export default function Login({ navigation }) {
   const {login} = useContext(AuthContext)
   
     const handleLogin = async () => {
-     
       try {
         
         const postData = { email: email, senha: senha };
@@ -52,6 +51,7 @@ export default function Login({ navigation }) {
       }
       
     };
+
 
   return (
     <View style={styles.container}>

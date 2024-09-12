@@ -16,14 +16,15 @@ const styles = StyleSheet.create({
         margin: 40
     },
     buttonFooter:{
-        position:"absolute",
-        bottom: 0,
-        marginBottom:10
+         position:"absolute",
+         bottom: 0,
+         marginBottom:10
     },
     btn:{
         width: "100%",
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        marginBottom: 40
     }
 });
 

@@ -26,18 +26,9 @@ export default function Page({navigation}) {
     const pergunta={id_pergunta:'',
       dsPergunda:'',
       imgPergunta:''};
-    //const[nrPergunta, setNrPergunta] = useState(1);
-    //const[txtPergunta, setTxtPergunta] = useState("A altura, a carga, a largura e o peso máximo que devem ser obedecidos pelo condutor do veículo constam na sinalização vertical de:");
     const {id_pergunta} = pergunta1
     const{dsPergunda} = pergunta1
     const {imgPergunta} = pergunta1
-   
-    // useEffect(()=>{
-    //   const {id_pergunta} = pergunta1
-    //   const{dsPergunda} = pergunta1
-    //   const {imgPergunta} = pergunta1
-    // })
-
 
   return (
     <View style={styles.container}>

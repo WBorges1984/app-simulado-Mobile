@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     btnBottom:{
+        flexDirection:"row",
         position:"absolute",
         bottom: 0,
         marginBottom:30,
@@ -83,11 +84,17 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems:"center",
         justifyContent:"center",
-        gap: 5
+        gap: 16,
+
     },
+    btn:{
+        
+    },  
     img:{
         position:"static",
-        alignItems:"center"
+        alignItems:"center",
+        width: "auto",
+        height:80
     }
 });
 

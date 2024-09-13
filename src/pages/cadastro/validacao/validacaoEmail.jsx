@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
 import styles from "./validacaoEmail.style.js";
 import logo from "../../../assets/cart.png";
 import InputText from "../../../components/inputText/inputText.jsx";
@@ -6,6 +6,7 @@ import ButtonBottom from "../../../components/ButtonBottom/ButtonBottom.jsx";
 import { useRoute } from "@react-navigation/native";
 import e_mail from 'react-native-email'
 import { useEffect, useState } from "react";
+import { apiPost } from "../../../services/api.js";
 
 export default function ValidacaoEmail({ navigation, user }) {
   const route = useRoute();
@@ -29,34 +30,39 @@ export default function ValidacaoEmail({ navigation, user }) {
       // Define o número no formato "XXX-XXX"
       setRandomNumber(`${part1}-${part2}`);
       setRandomNumber2(`${part1}${part2}`);
+
+
     };
     
-    function handleEmail(){
-      const to = email; 
-      e_mail(to, {
-          //cc: ['bazzy@moo.com', 'doooo@daaa.com'], 
-          bcc: 'mee@mee.com', 
-          subject: 'Mobile Simulado RJ',
-          body: `Este é seu número de validação: ${randomNumber} `,
-          checkCanOpen: false 
-      }).catch(console.error)
-    }
+    
 
 
     handleGenerate();
-    handleEmail();
+    
 
   },[]);
 
-  function ValidarEmail(){
+  
 
-    if(codigoDigitado == randomNumber || codigoDigitado == randomNumber2){
-      () => navigation.navigate("InicialLogado")
-    }else{
-      alert(`O número deve ser igual ao que foi enviado para o email ${email}`)
+    async function Cadastrar(){
+
+      try {
+
+        const postData = {"nome": nome, "email": email, "senha":senha}
+    
+        const result = await apiPost("/usuarios/registro", postData);
+
+        if(result && result.affectedRows > 0){
+          console.log("999999999999999999");
+          login(result);
+                navigation.navigate("InicialLogado");
+        }
+      } catch (error) {
+        Alert("Erro ao cadastrar usuário: ", error)
+      }
+      
+
     }
-
-  }
 
   return (
     <View style={styles.container}>
@@ -67,7 +73,7 @@ export default function ValidacaoEmail({ navigation, user }) {
         <InputText label="Digite o código" onChangeText={(texto)=>setCodigoDigitado(texto)}/>
       </View>
       <View style={styles.btn}>
-        <ButtonBottom textWhite fullW colorBackBlue texto="Cadastrar" onPress={ValidarEmail()}/>
+        <ButtonBottom textWhite fullW colorBackBlue texto="Cadastrar" onPress={Cadastrar}/>
       </View>
       <View style={styles.btnDown}>
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>

@@ -26,7 +26,7 @@ export default function Cadastro({ navigation }) {
   }
   return (
     <View style={styles.container}>
-      <Image source={logo} style={styles.logo} />
+      <Image source={logo}  />
       <Text>Crie sua conta</Text>
       <View style={styles.input}>
         <InputText label="Nome" onChangeText={(texto)=> setNome(texto)}/>

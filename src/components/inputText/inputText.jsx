@@ -3,7 +3,7 @@ import styles from './inputText.style';
 
 export default function InputText({editable,label,placeholder,isPassword, onChangeText, value}) {
     return (
-      <>
+      <View>
         {label && <Text style={styles.label}>{label}</Text>}
         <TextInput
           style={styles.input}
@@ -13,6 +13,6 @@ export default function InputText({editable,label,placeholder,isPassword, onChan
           value={value}
           editable ={editable}
         />
-      </>
+      </View>
     );
   }

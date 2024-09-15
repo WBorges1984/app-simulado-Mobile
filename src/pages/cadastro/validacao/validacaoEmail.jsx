@@ -7,6 +7,7 @@ import { useRoute } from "@react-navigation/native";
 import e_mail from 'react-native-email'
 import { useEffect, useState } from "react";
 import { apiPost } from "../../../services/api.js";
+import Login from "../../Login/Login.jsx";
 
 export default function ValidacaoEmail({ navigation, user }) {
   const route = useRoute();
@@ -52,13 +53,14 @@ export default function ValidacaoEmail({ navigation, user }) {
     
         const result = await apiPost("/usuarios/registro", postData);
 
-        if(result && result.affectedRows > 0){
-          console.log("999999999999999999");
-          login(result);
-                navigation.navigate("InicialLogado");
+       
+        console.log(result.result.affectedRows);
+        if( result.result.affectedRows > 0){
+          Alert.alert("Usuário cadastrado com sucesso!")
+                navigation.navigate("Inicial");
         }
       } catch (error) {
-        Alert("Erro ao cadastrar usuário: ", error)
+        console.error("Erro ao cadastrar usuário: ", error)
       }
       
 

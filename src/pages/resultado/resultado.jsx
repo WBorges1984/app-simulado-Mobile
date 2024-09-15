@@ -51,8 +51,9 @@ export default function Resultado({navigation}) {
       <View style={styles.ItemId}>
         <ButtonBottom textWhite texto={item.id} fullW/>
       </View>
-
-      <View style={parseInt(item.percent) > 69 ? styles.dadosItemGreen : styles.dadosItemRed}>
+   
+      {/* <View style={parseInt(item.percent) > 69 ? styles.dadosItemGreen : styles.dadosItemRed}> */}
+      <View style={ item.acertos > 20 ? styles.dadosItemGreen : styles.dadosItemRed}>
         <View>
           <Text style={styles.textoDT}>Data: {convertDate(item.dt_prova)}</Text>
           <Text style={styles.textoDT}>Tempo: {item.tempo}min</Text>

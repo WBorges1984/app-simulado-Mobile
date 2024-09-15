@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
         height:31,
         backgroundColor: COLORS.blue,
         borderRadius: 6,
+        paddingRight:10,
+        paddingLeft:10
     },
     colorBackTrans:{
         width: "auto",
@@ -47,6 +49,8 @@ const styles = StyleSheet.create({
         borderStyle:'solid',
         borderColor:COLORS.grayLight,
         borderRadius: 6,
+        paddingRight:10,
+        paddingLeft:10
     },
     colorBackGray:{
         width: "auto",

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: COLORS.white,
-        paddingTop:60,
+        paddingTop:30,
         paddingLeft: 10,
         paddingRight: 10,
     },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems:"center",
         justifyContent:"center",
-        gap: 16,
+        gap: 2,
 
     },
     btn:{
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         position:"static",
         alignItems:"center",
         width: "auto",
-        height:80
+        height:80,
     }
 });
 

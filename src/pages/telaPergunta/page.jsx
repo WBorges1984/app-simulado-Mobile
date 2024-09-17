@@ -73,21 +73,18 @@ export default function Page({navigation}) {
     setProxima(prevProxima => prevProxima + 1);
 
     console.log("provaflash:> ", provaFlash)
-    adicionaPergunta();
+    adicionaPergunta(provaFlash[0].pergunta,provaFlash[0].resposta);
   }
 
-  function adicionaPergunta(){
-    let pergunta;
-    let resposta;
-    
-    
+  function adicionaPergunta(per, res){
+
 
     setProva(prevProva => [
       ...prevProva, // Spread dos itens já existentes no array
-      { escolha: pergunta, prova: resposta } // Novo objeto a ser adicionado
+      { escolha: per, prova: res} // Novo objeto a ser adicionado
     ]);
 
-    console.log(prova)
+    console.log('provaa: ', prova)
 
   }
 

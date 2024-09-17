@@ -9,6 +9,7 @@ import img from '../../assets/cart.png';
 import { AuthContext } from '../../context/AuthProvider.js';
 import { apiGet } from '../../services/api.js';
 import FastImage from 'react-native-fast-image';
+import { COLORS } from '../../constants/theme.js';
 
 export default function Page({navigation}) {
   const [questao, setQuestao] = useState('');
@@ -18,6 +19,13 @@ export default function Page({navigation}) {
   const [proxima, setProxima] = useState(0);
   const [nrQuestao, setNrQuestao] = useState(1);
   const [questaoFeita, setQuestaoFeita] = useState([]); // Lista de questões feitas
+  const [letters, setLetters] = useState(['A','B','C','D']); 
+  const [opcoes, setOpcoes] = useState(); 
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [prova, setProva] = useState([]);
+  const [provaFlash, setProvaFlash] = useState([]);
+
+
 
   useEffect(() => {
     if (userData === '') {
@@ -43,12 +51,17 @@ export default function Page({navigation}) {
 
       // Atualiza o array com a nova questão
       setQuestaoFeita([...questaoFeita, numQuestion]);
-      console.log('Questões já feitas:', questaoFeita);
+      //console.log('Questões já feitas:', questaoFeita);
 
       // Busca a questão da API
       const question = await apiGet(`/questao/${numQuestion}`);
       setQuestaoGet(question);
       setQuestao(question);
+
+      const shuffledOptions = question.opcoes.sort(() => Math.random() - 0.5);
+      setOpcoes(shuffledOptions);
+      
+
     };
 
     getQuestion();
@@ -58,7 +71,43 @@ export default function Page({navigation}) {
     // Atualiza o número da questão e o contador `proxima` quando o botão "Próximo" é clicado
     setNrQuestao(prevNrQuestao => prevNrQuestao + 1);
     setProxima(prevProxima => prevProxima + 1);
+
+    console.log("provaflash:> ", provaFlash)
+    adicionaPergunta();
   }
+
+  function adicionaPergunta(){
+    let pergunta;
+    let resposta;
+    
+    
+
+    setProva(prevProva => [
+      ...prevProva, // Spread dos itens já existentes no array
+      { escolha: pergunta, prova: resposta } // Novo objeto a ser adicionado
+    ]);
+
+    console.log(prova)
+
+  }
+
+  function handleOptionSelect(resposta, pergunta) {
+    // Define a opção selecionada e previne a seleção de outra até a próxima questão
+    setSelectedOption('');
+    setSelectedOption(resposta)
+
+    //adiciona resposta na memoria
+    setProvaFlash([{resposta, pergunta}])
+    
+
+    console.log(provaFlash)
+  }
+
+  function corrigir(){
+    console.log(prova)
+    navigation.navigate("resultadoFinal")
+  }
+  
 
   return (
     <View style={styles.container}>
@@ -81,30 +130,21 @@ export default function Page({navigation}) {
             />
           </View>
         )}
-        <TouchableOpacity>
-          <View style={styles.opPergunta}>
-            <Text style={styles.letterOp}>A</Text>
-            <Text style={styles.txtOpPergunta}>serviço</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <View style={styles.opPergunta}>
-            <Text style={styles.letterOp}>B</Text>
-            <Text style={styles.txtOpPergunta}>complementação</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <View style={styles.opPergunta}>
-            <Text style={styles.letterOp}>C</Text>
-            <Text style={styles.txtOpPergunta}>indicação</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <View style={styles.opPergunta}>
-            <Text style={styles.letterOp}>D</Text>
-            <Text style={styles.txtOpPergunta}>regulamentação</Text>
-          </View>
-        </TouchableOpacity>
+        {/* ------ OPÇÕES DA PERGUNTA ------*/}
+
+        {opcoes && opcoes.map((item, i)=>{
+          const isSelected = selectedOption === item.option_id;
+          return(
+            <TouchableOpacity key={item.option_id} 
+              onPress={(e) => handleOptionSelect(item.option_id, item.question_id, item.option_letter)}
+             
+            >
+              <View style={styles.opPergunta}>
+                <Text style={selectedOption === item.option_id ? styles.letterOpSelect : styles.letterOp}>{letters[i]}</Text>
+                  <Text style={styles.txtOpPergunta}>{item.option_text}{item.option_letter}</Text>
+              </View>
+            </TouchableOpacity>)
+        })}
       </View>
       
 
@@ -116,7 +156,7 @@ export default function Page({navigation}) {
           <ButtonBottom onPress={proximaPergunga} colorBackTrans textBlue fullW texto="Próximo" />
         </View>
         <View style={styles.btn}>
-          <ButtonBottom colorBackTrans textBlue fullW texto="Corrigir" onPress={() => navigation.navigate("resultadoFinal")} />
+          <ButtonBottom onPress={corrigir}  colorBackTrans textBlue fullW texto="Corrigir"  />
         </View>
         <View style={styles.btn}>
           <ButtonBottom colorBackBlue textWhite fullW texto="Nova Prova" />

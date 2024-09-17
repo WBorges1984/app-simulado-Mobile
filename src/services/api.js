@@ -2,8 +2,8 @@
 
 import { Alert } from "react-native";
 
-const BASE_URL = 'http://192.168.1.5:8082/v1';  
-//const BASE_URL = 'http://10.1.1.101:8082/v1';  
+// const BASE_URL = 'http://192.168.1.5:8082/v1';  
+const BASE_URL = 'http://10.1.1.101:8082/v1';  
 
 // Função GET
 export const apiGet = async (endpoint) => {

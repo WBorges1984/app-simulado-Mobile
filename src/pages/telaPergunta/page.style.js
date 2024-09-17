@@ -67,6 +67,17 @@ const styles = StyleSheet.create({
         borderRadius:5,
         marginTop:10,
     },
+    letterOpSelect:{
+        width: 35,
+        height:35,
+        backgroundColor: COLORS.greenLight,
+        color: COLORS.white,
+        fontSize: FONT_SIZE[20],
+        textAlignVertical:"center",
+        textAlign: "center",
+        borderRadius:5,
+        marginTop:10,
+    },
     txtOpPergunta:{
         fontSize: FONT_SIZE[16],
         backgroundColor: COLORS.grayLight,

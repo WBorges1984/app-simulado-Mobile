@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native';
-import styles from '../botoes/buttons.style.js'
+import styles from './question.style.js'
 
 export default function Question({ nrQuestao, questionText, imageUrl }) {
   return (

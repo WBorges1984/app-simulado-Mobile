@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     containerConteudo:{
         paddingRight: 45,
-        marginTop: 50
+        marginTop: 35
     },
     nrPergunta:{
         width: 35,

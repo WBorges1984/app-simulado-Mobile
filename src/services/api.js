@@ -1,14 +1,14 @@
 // src/services/api.js
+import { BASE_URL } from '@env';
 
-import { Alert } from "react-native";
+// const BASE_URL = 'http://192.168.1.5:8082/v1';  
+ const URL = BASE_URL;  
 
-const BASE_URL = 'http://192.168.1.5:8082/v1';  
-// const BASE_URL = 'http://10.1.1.101:8082/v1';  
 
 // Função GET
 export const apiGet = async (endpoint) => {
   try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${URL}${endpoint}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -18,17 +18,19 @@ export const apiGet = async (endpoint) => {
       throw new Error(`Erro HTTP! status: ${response.status}`);
     }
     const data = await response.json();
+    
     return data;
   } catch (error) {
     console.error('Erro na requisição GET:', error);
     throw error;
   }
+
 };
 
 // Função POST
 export const apiPost = async (endpoint, body) => {
   try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${URL}${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,9 +52,8 @@ export const apiPost = async (endpoint, body) => {
     } else {
       throw new Error('Resposta não está em formato JSON');
     }
-
   } catch (error) {
-    console.error('Erro na requisição POST:', error);
+    console.error(' Erro na requisição POST:', error);
     throw error; // Repassar o erro para ser tratado fora da função
   }
 };

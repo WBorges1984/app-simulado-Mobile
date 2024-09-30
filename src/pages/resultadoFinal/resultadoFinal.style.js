@@ -124,6 +124,8 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     btnBottom:{
+        display:"flex",
+        flexDirection:"row",
         position:"absolute",
         bottom: 0,
         marginBottom:30,
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems:"center",
         justifyContent:"center",
-        gap: 5
+        gap: 60
     },
     img:{
         position:"static",

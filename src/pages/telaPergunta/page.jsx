@@ -37,11 +37,13 @@ export default function Page({navigation}) {
   }, [userData]);
 
   const getNrProva = async () =>{
+    
     if(provaNr == ''){
       const {nr} = await apiGet('/resultado/provanr');
-      if(nr == null || nr == 0){
-        provaNr = 1;
-      }
+      console.log(nr)
+        if(nr == null || nr == 0){
+          provaNr = 1;
+        }
       setProvaNr(nr + 1);
       
     }
@@ -87,7 +89,7 @@ export default function Page({navigation}) {
     
     try {
       const postData = { idQuestion: questionID, pagina: pagina, selectedOption: selectedOption, userId: user };
-      console.log(postData)
+
       const gravar = await apiPost('/answers/inserir', postData );
     } catch (error) {
       console.log(error);
@@ -103,8 +105,6 @@ export default function Page({navigation}) {
       gravarResposta(pergunta, 1,resposta, nrQuestao)
       setNrQuestao(prevNrQuestao => prevNrQuestao + 1);
       setProxima(prevProxima => prevProxima + 1);
-
-      console.log(pergunta, resposta)
       setProvaFlash(undefined)
     }
   }
@@ -112,8 +112,7 @@ export default function Page({navigation}) {
   function handleOptionSelect(resposta, pergunta) {
     setSelectedOption(resposta);
     setProvaFlash({ resposta, pergunta });
-    console.log(resposta, pergunta)
-    console.log(provaFlash)
+    
   }
 
   function corrigir() {

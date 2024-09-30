@@ -94,8 +94,8 @@ export default function Page({ navigation }) {
       </View>
 
       <View style={styles.btnBottom}>
-        <ButtonBottom colorBackTrans textBlue fullW texto="Menu Principal" onPress={() => navigation.navigate("InicialLogado")} />
-        <ButtonBottom colorBackBlue textWhite fullW texto="Nova Prova" onPress={() => navigation.navigate("pagePergunta")} />
+        <ButtonBottom colorBackTrans textBlue  texto="Menu Principal" onPress={() => navigation.navigate("InicialLogado")} />
+        <ButtonBottom colorBackBlue textWhite  texto="Nova Prova" onPress={() => navigation.navigate("pagePergunta")} />
       </View>
     </View>
   );

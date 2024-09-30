@@ -94,7 +94,7 @@ export default function Page({navigation}) {
     }
   }
 
-  function proximaPergunga() {
+  function proximaPergunta() {
     
     if(selectedOption == undefined || provaFlash == undefined){
       return Alert.alert("Precisa selecionar uma opção.")
@@ -128,7 +128,7 @@ export default function Page({navigation}) {
         <Question nrQuestao={nrQuestao} questionText={questao.question_text} imageUrl={image_url} />
         <Options options={opcoes} letters={letters} selectedOption={selectedOption} handleOptionSelect={handleOptionSelect} />
       </View>
-      <Buttons proximaPergunga={proximaPergunga} corrigir={corrigir} />
+      <Buttons proximaPergunta={proximaPergunta} corrigir={corrigir} />
     </View>
   );
 }

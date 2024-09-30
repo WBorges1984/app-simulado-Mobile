@@ -16,7 +16,7 @@ export default function Options({ options, letters, selectedOption, handleOption
                 {letters[i]}
               </Text>
               <Text style={styles.txtOpPergunta}>
-                {item.option_text} {item.option_letter}
+                 {item.option_text} {/* {item.option_letter} */}
               </Text>
             </View>
           </TouchableOpacity>

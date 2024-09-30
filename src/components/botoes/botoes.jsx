@@ -5,9 +5,9 @@ export default function Buttons({ proximaPergunga, corrigir }) {
   return (
     <View style={styles.btnBottom}>
       <View style={styles.btnPar}>
-        <View style={styles.btn}>
+        {/* <View style={styles.btn}>
           <ButtonBottom colorBackTrans textBlue fullW texto="Anterior" />
-        </View>
+        </View> */}
         <View style={styles.btn}>
           <ButtonBottom onPress={proximaPergunga} colorBackTrans textBlue fullW texto="Próximo" />
         </View>

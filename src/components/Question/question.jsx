@@ -1,5 +1,6 @@
 import { View, Text, Image } from 'react-native';
 import styles from './question.style.js'
+import q1161 from '../../assets/QUESTAO_1161.gif'
 
 export default function Question({ nrQuestao, questionText, imageUrl }) {
   return (
@@ -10,11 +11,19 @@ export default function Question({ nrQuestao, questionText, imageUrl }) {
       </View>
       {imageUrl && (
         <View style={styles.img}>
+          {imageUrl == "QUESTAO_1161" ?
+            <Image
+            style={{ width: 350, height: 80 }}
+            //source={{ uri: imageUrl }}
+            source={q1161}
+            resizeMode="contain"
+          />:
           <Image
-            style={{ width: 150, height: 80 }}
+            style={{ width: 350, height: 80 }}
             source={{ uri: imageUrl }}
             resizeMode="contain"
           />
+          }
         </View>
       )}
     </View>

@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: 48,
         marginTop: 25,
+        
      },
     textoPerc:{
         color: COLORS.white,
@@ -28,18 +29,22 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         padding:10,
         alignItems:"baseline",
-        width: "100%",
-        gap: 20
+        width: "62%",
+        gap: 20,
+        borderRadius: 10,
+        
     },
     textoPerc:{
         color:COLORS.white,
         fontSize:FONT_SIZE[16],
+        marginRight: 10
         
     },
     numPerc:{
         color:COLORS.white,
         fontSize:FONT_SIZE[48],
-        fontWeight:"bold"
+        fontWeight:"bold",
+        marginRight: 10
     },  
     dsPerc:{
         color:COLORS.white,
@@ -53,15 +58,17 @@ const styles = StyleSheet.create({
     
     },
     quadroPerguntas:{
-        width: "100%",
         height: 111,
         backgroundColor:COLORS.grayLight,
-        alignItems: "center"
+        alignItems: "center",
+        flexWrap:"wrap",
     },
     linhaQuadro:{
+        flexWrap:"wrap",
         flexDirection:"row",
         padding: 5,
         gap: 5,
+        
     },
     pergunta:{
         flexDirection: "row",

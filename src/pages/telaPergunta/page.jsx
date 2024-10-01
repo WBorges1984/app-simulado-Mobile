@@ -40,7 +40,7 @@ export default function Page({navigation}) {
     
     if(provaNr == ''){
       const {nr} = await apiGet('/resultado/provanr');
-      console.log(nr)
+      //console.log(nr)
         if(nr == null || nr == 0){
           provaNr = 1;
         }

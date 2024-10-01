@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         height: 33,
         borderRadius: 5,
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
 
     },
     containerRed:{
@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         height: 33,
         borderRadius: 5,
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+        
 
     },
     textoBtn:{

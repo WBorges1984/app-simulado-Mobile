@@ -31,7 +31,7 @@ export default function Login({ navigation }) {
         
         const result = await apiPost('/usuarios/login', postData);
         
-        console.log( result)
+        //console.log( result)
        
           login(result);
           navigation.navigate("InicialLogado");

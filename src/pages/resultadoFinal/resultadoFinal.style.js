@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     nrPergunta:{
         width: 35,
         height:35,
-        backgroundColor: COLORS.blue,
+        backgroundColor: COLORS.blueLight,
         color: COLORS.white,
         fontSize: FONT_SIZE[20],
         textAlignVertical:"center",

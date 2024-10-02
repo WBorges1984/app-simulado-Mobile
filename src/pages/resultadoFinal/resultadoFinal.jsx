@@ -15,7 +15,12 @@ export default function Page({ navigation }) {
   const { dsPergunda } = pergunta1;
   const { imgPergunta } = pergunta1;
   const [answers, setAnswers] = useState([])
+  const [quest, setQuest] = useState ([])
 
+  async function getQuest(id){
+    let res = await apiGet(`http://localhost:8082/v1/questao/${id}`);
+    setQuest(res)
+  }
   
   useEffect((()=>{
     
@@ -24,10 +29,11 @@ export default function Page({ navigation }) {
       setAnswers(response) 
 
     }
-    console.log(answers)
-
-    
     getAnswers();
+  }),[])
+
+  useEffect((()=>{
+    
   }),[])
 
   return (
@@ -58,8 +64,8 @@ export default function Page({ navigation }) {
 
       <View style={styles.containerConteudo}>
         <View style={styles.pergunta}>
-          <Text style={styles.nrPergunta}>{id_pergunta}</Text>
-          <Text style={styles.txtPergunta}>{dsPergunda}</Text>
+          <Text style={styles.nrPergunta}>1</Text>
+          <Text style={styles.txtPergunta}>kjhg sdçlfkgjsçldf dçlfkjgl dçlfgkj</Text>
         </View>
         <View style={styles.img}>
           <Image source={{ uri: imgPergunta }} />
@@ -71,12 +77,7 @@ export default function Page({ navigation }) {
             <Text style={styles.txtOpPergunta}>indicação</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <View style={styles.opPergunta}>
-            <Text style={styles.letterOp}>D</Text>
-            <Text style={styles.txtOpPerguntaCorreta}>regulamentação</Text>
-          </View>
-        </TouchableOpacity>
+        
       </View>
 
       <View style={styles.btnBottom}>

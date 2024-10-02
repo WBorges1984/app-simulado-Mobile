@@ -19,6 +19,7 @@ export default function Page({ navigation }) {
 
   async function getQuest(id){
     let res = await apiGet(`http://localhost:8082/v1/questao/${id}`);
+    console.log(res)
     setQuest(res)
   }
   

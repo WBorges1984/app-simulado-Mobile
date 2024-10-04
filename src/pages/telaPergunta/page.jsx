@@ -117,6 +117,7 @@ export default function Page({navigation}) {
 
   function corrigir() {
     navigation.navigate("resultadoFinal");
+    console.log('oiii')
   }
 
   return (

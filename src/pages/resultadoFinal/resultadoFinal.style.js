@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
         padding: 5,
         gap: 5,
         
+        
     },
     pergunta:{
         flexDirection: "row",

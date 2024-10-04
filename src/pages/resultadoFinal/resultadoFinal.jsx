@@ -9,7 +9,7 @@ import { pergunta1 } from "../../constants/data.js";
 import ButtonResultado from "../../components/buttonResultado/buttonResultado.jsx";
 import { apiGet } from "../../services/api.js";
 
-export default function Page({ navigation }) {
+export default function ResultadoFinal({ navigation }) {
   const pergunta = { id_pergunta: "", dsPergunda: "", imgPergunta: "" };
   const { id_pergunta } = pergunta1;
   const { dsPergunda } = pergunta1;

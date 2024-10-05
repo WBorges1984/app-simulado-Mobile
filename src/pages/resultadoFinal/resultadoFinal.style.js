@@ -34,6 +34,16 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         
     },
+    txtPercRed:{
+        backgroundColor: COLORS.red,
+        flexDirection:"row",
+        padding:10,
+        alignItems:"baseline",
+        width: "62%",
+        gap: 20,
+        borderRadius: 10,
+        
+    },
     textoPerc:{
         color:COLORS.white,
         fontSize:FONT_SIZE[16],

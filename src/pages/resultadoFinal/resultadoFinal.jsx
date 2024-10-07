@@ -40,8 +40,7 @@ export default function ResultadoFinal({ navigation }) {
     const buscaPergunta = await apiGet(`/questao/${idAnswers[0].options[0].question_id}`)
     setQuestaoText(buscaPergunta.question_text)
     // console.log('resposta user: ', idAnswers[0].options[0], 'Questão', buscaPergunta);
-    console.log('---------------------------------------------');
-     console.log(id);
+    
   }
 
   useEffect(() => {

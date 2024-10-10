@@ -106,7 +106,12 @@ const styles = StyleSheet.create({
         alignItems:"center",
         width: "auto",
         height:80,
-    }
+    },
+    scrollView: {
+            backgroundColor: 'pink',
+            marginHorizontal: 25,
+          },
+    
 });
 
 export default styles;

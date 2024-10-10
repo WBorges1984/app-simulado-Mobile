@@ -1,4 +1,4 @@
-import { View, Image, Alert } from 'react-native';
+import { View, Image, Alert, ScrollView } from 'react-native';
 import styles from './page.style.js';
 import logo from "../../assets/cart.png";
 import { useContext, useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import Question from '../../components/Question/question.jsx';
 import Timer from '../../components/cronometro/cronometro.jsx';
 import Buttons from '../../components/botoes/botoes.jsx';
 import Options from '../../components/options/options.jsx';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function Page({navigation}) {
@@ -121,14 +122,18 @@ export default function Page({navigation}) {
   }
 
   return (
+    <SafeAreaView style={styles.container}>
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
       <Timer />
       <View style={styles.containerConteudo}>
+      <ScrollView style={styles.scrollView}>
         <Question nrQuestao={nrQuestao} questionText={questao.question_text} imageUrl={image_url} />
         <Options options={opcoes} letters={letters} selectedOption={selectedOption} handleOptionSelect={handleOptionSelect} />
+        </ScrollView>
       </View>
       <Buttons proximaPergunta={proximaPergunta} corrigir={corrigir} />
     </View>
+    </SafeAreaView>
   );
 }

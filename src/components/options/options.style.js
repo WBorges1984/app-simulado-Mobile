@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: COLORS.white,
-        paddingTop:30,
+        width: "100%",
         paddingLeft: 10,
-        paddingRight: 10,
     },
     cronometro:{
         color: COLORS.green,
@@ -48,13 +47,13 @@ const styles = StyleSheet.create({
         fontSize: FONT_SIZE[16],
         height:"auto",
         width:"100%",
-        padding: 10
+        padding: 0
     },
     opPergunta:{
         flexDirection:"row",
-        alignItems:"center",
+        width:"100%",
         gap:10,
-        paddingRight: 8,
+        paddingRight: 80,
     },
     letterOp:{
         width: 35,
@@ -83,8 +82,9 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.grayLight,
         width: "100%",
         height:"auto",
-        padding: 10,
-        marginTop: 10
+        marginTop: 10,
+        paddingLeft:5,
+        textAlign:"left",
     },
     btnBottom:{
         flexDirection:"row",

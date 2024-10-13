@@ -3,11 +3,11 @@ import styles from './options.style.js';
 
 export default function Options({ options, letters, selectedOption, handleOptionSelect }) {
   return (
-    <View>
+    <View style={styles.container}>
       {options && options.map((item, i) => {
         const isSelected = selectedOption === item.option_id;
         return (
-          <TouchableOpacity
+          <TouchableOpacity 
             key={item.option_id}
             onPress={() => handleOptionSelect(item.option_id, item.question_id, item.option_letter)}
           >

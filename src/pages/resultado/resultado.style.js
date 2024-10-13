@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
         height: 60,
         paddingBottom: 10,
         paddingTop: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
         borderRadius: 5,
         marginBottom: 20,
         

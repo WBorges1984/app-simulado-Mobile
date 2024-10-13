@@ -123,12 +123,12 @@ export default function Desempenho({navigation}) {
       <View style={styles.mediaProb}> 
         <View style={styles.texto1}>
         <Text style={styles.texto}>Na média simples: </Text>
-                <Text style={mediaSimples > 49 ? styles.varGreen :styles.varRed}>{mediaSimples}% Aprovação </Text>
+                <Text style={mediaSimples > 49 ? styles.varGreen :styles.varRed}>{mediaSimples.toFixed(2)}% Aprovação </Text>
             </View>
 
             <View style={styles.texto1}>
             <Text style={styles.texto}>Probabilidade de acerto: </Text>
-                <Text style={probabilidade < 50 ? styles.varRed: styles.varGreen}>{probabilidade}% Acerto</Text>
+                <Text style={probabilidade < 50 ? styles.varRed: styles.varGreen}>{probabilidade.toFixed(2)}% Acerto</Text>
             </View>
       </View>
         <View style={styles.btnBottom}>

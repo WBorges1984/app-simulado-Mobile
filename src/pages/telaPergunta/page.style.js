@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         paddingTop:30,
         paddingLeft: 10,
-        paddingRight: 10,
+        paddingRight: 10
     },
     cronometro:{
         color: COLORS.green,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         gap: 5
     },
     containerConteudo:{
-        paddingRight: 45,
+        paddingRight: 10,
         marginTop: 35
     },
     nrPergunta:{
@@ -108,8 +108,12 @@ const styles = StyleSheet.create({
         height:80,
     },
     scrollView: {
-            backgroundColor: 'pink',
-            marginHorizontal: 25,
+        width:"auto",
+        flexWrap:"wrap",
+        paddingRight: 10
+
+            // backgroundColor: 'pink',
+             //marginHorizontal: 0,
           },
     
 });

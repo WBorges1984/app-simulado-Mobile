@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         paddingTop:30,
         paddingLeft: 10,
         paddingRight: 10,
+        
     },
     cronometro:{
         color: COLORS.green,
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         alignItems:"flex-end",
         position: "absolute",
         right: 0,
-        top: 105,
+        top: 70,
         paddingRight: 10,
         
     }

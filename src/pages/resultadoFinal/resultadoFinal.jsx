@@ -9,7 +9,8 @@ import like from "../../assets/like.png";
 import dislike from "../../assets/dislike.png";
 import { pergunta1 } from "../../constants/data.js";
 import ButtonResultado from "../../components/buttonResultado/buttonResultado.jsx";
-import { apiGet } from "../../services/api.js";
+import { apiGet, apiPost, apiPut } from "../../services/api.js";
+import { useRoute } from '@react-navigation/native';
 
 export default function ResultadoFinal({ navigation }) {
   const { imgPergunta } = pergunta1;
@@ -20,6 +21,9 @@ export default function ResultadoFinal({ navigation }) {
   const [pagina, setPagina] = useState(0);
   const [resultado, setResultado] = useState({});
   
+  const route = useRoute();
+  const { params } = route;
+  const questionId = params.params;
 
   async function getAnswersNumber(id, pagina) {
     setPagina(pagina)
@@ -28,6 +32,7 @@ export default function ResultadoFinal({ navigation }) {
 
     //filtra para a resposta solicitada
     const idAnswers = response.filter((item) => item.question_id === id);
+    
     setOptionCorreta(idAnswers[0].options[0].option_text)
     if(idAnswers[0].options[1]){
       setOptionErrada(idAnswers[0].options[1].option_text)
@@ -57,7 +62,7 @@ export default function ResultadoFinal({ navigation }) {
   }
 
   useEffect(() => {
-    getAnswersNumber(1,1);
+    getAnswersNumber(questionId,1);
     BuscaResultado(); 
   }, []);
 
@@ -65,6 +70,28 @@ export default function ResultadoFinal({ navigation }) {
     const calc = (acertos / 30) * 100;
     return calc.toFixed(0);
   }
+
+  async function FinalyInitial(){
+    const result ={
+      user: 1, 
+      prova_nr: 0, 
+      tempo: 0, 
+      acertos: 0
+    }
+    try {
+      const {nr} = await apiGet("/resultado/provanr")
+      result.prova_nr = nr + 1;
+      result.tempo = 21;
+      result.acertos = resultado.total;
+      await apiPost("/resultado", result);
+      await apiPut("/truncate/", { tableName: "answers" }); 
+      navigation.navigate("InicialLogado")
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
 
   return (
     <View style={styles.container}>
@@ -128,7 +155,7 @@ export default function ResultadoFinal({ navigation }) {
           colorBackTrans
           textBlue
           texto="Menu Principal"
-          onPress={''}
+          onPress={FinalyInitial}
         />
         <ButtonBottom
           colorBackBlue

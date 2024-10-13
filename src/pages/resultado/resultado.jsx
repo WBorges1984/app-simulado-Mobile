@@ -49,7 +49,7 @@ export default function Resultado({navigation}) {
     <View style={styles.item}>
       
       <View style={styles.ItemId}>
-        <ButtonBottom textWhite texto={item.id} fullW/>
+        <ButtonBottom textWhite texto={item.prova_nr} fullW/>
       </View>
    
       {/* <View style={parseInt(item.percent) > 69 ? styles.dadosItemGreen : styles.dadosItemRed}> */}

@@ -14,7 +14,6 @@ export default function Question({ nrQuestao, questionText, imageUrl }) {
           {imageUrl == "QUESTAO_1161" ?
             <Image
             style={{ width: 350, height: 80 }}
-            //source={{ uri: imageUrl }}
             source={q1161}
             resizeMode="contain"
           />:

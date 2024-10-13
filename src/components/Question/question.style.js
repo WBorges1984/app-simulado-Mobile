@@ -3,10 +3,14 @@ import { COLORS, FONT_SIZE } from "../../constants/theme";
 
 
 const styles = StyleSheet.create({
+    container:{
+        paddingRight:80
+    },
     pergunta:{
         flexDirection: "row",
         marginBottom: 10,
-        gap: 5
+        gap: 5,
+
     },
     containerConteudo:{
         paddingRight: 45,
@@ -28,7 +32,8 @@ const styles = StyleSheet.create({
         fontSize: FONT_SIZE[16],
         height:"auto",
         width:"100%",
-        padding: 10
+        padding: 10,
+        paddingRight: 15
     },
     opPergunta:{
         flexDirection:"row",

@@ -3,7 +3,7 @@ import styles from "./page.style.js";
 import logo from "../../assets/cart.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider.js";
-import { apiGet, apiPost } from "../../services/api.js";
+import { apiGet, apiPost, apiPut } from "../../services/api.js";
 import FastImage from "react-native-fast-image";
 import { COLORS } from "../../constants/theme.js";
 import Question from "../../components/Question/question.jsx";
@@ -168,9 +168,7 @@ async function corrigir() {
             const idFirst = await getFirstAnswers(); // Aguarda a resposta da função assíncrona
             
             // Certifique-se de que 'idFirst' seja um número antes de passar para a navegação
-            navigation.navigate("resultadoFinal", {
-              params: idFirst, // Passe o question_id diretamente
-            });
+            navigation.navigate("resultadoFinal");
           },
         },
       ],
@@ -188,6 +186,37 @@ async function corrigir() {
   
 }
 
+async function FinalyNewQuestion(){
+  if(nrQuestao != 30){
+    Alert.alert(
+      "Concluir Prova",
+      "Você deseja concluir a prova sem responder todas as perguntas?",
+      [
+        {
+          text: "Não",
+          onPress: () => console.log("Prova continua"), // Não faz nada, apenas fecha o alerta
+          style: "cancel",
+        },
+        {
+          text: "Sim",
+          onPress: async () => {
+            
+            navigation.replace('pagePergunta');
+
+          },
+        },
+      ],
+      { cancelable: false }
+    );}
+
+  try {
+    await apiPut("/truncate/", { tableName: "answers" });
+    
+  } catch (error) {
+    console.error(error)
+  }
+}
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -200,7 +229,7 @@ async function corrigir() {
           </ScrollView>
         </View>
       </ScrollView>
-      <Buttons disable={disable} proximaPergunta={proximaPergunta} corrigir={corrigir} />
+      <Buttons disable={disable} FinalyNewQuestion={FinalyNewQuestion} proximaPergunta={proximaPergunta} corrigir={corrigir} />
     </View>
   );
 }

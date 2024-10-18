@@ -8,7 +8,7 @@ export default function Options({ options, letters, selectedOption, handleOption
         const isSelected = selectedOption === item.option_id;
         return (
           <TouchableOpacity 
-            key={item.option_id}
+            key={item.option_id || i}
             onPress={() => handleOptionSelect(item.option_id, item.question_id, item.option_letter)}
           >
             <View style={styles.opPergunta}>

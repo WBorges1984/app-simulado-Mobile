@@ -91,6 +91,26 @@ export default function ResultadoFinal({ navigation }) {
     }
   }
 
+  async function FinalyNewQuestion(){
+    const result ={
+      user: 1, 
+      prova_nr: 0, 
+      tempo: 0, 
+      acertos: 0
+    }
+    try {
+      const {nr} = await apiGet("/resultado/provanr")
+      result.prova_nr = nr + 1;
+      result.tempo = 21;
+      result.acertos = resultado.total;
+      await apiPost("/resultado", result);
+      await apiPut("/truncate/", { tableName: "answers" }); 
+      navigation.navigate("pagePergunta")
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
 
 
   return (
@@ -161,7 +181,7 @@ export default function ResultadoFinal({ navigation }) {
           colorBackBlue
           textWhite
           texto="Nova Prova"
-          onPress={() => navigation.navigate("pagePergunta")}
+          onPress={FinalyNewQuestion}
         />
       </View>
     </View>

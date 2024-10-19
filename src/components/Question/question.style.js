@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { COLORS, FONT_SIZE } from "../../constants/theme";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 
 const styles = StyleSheet.create({
@@ -91,6 +92,11 @@ const styles = StyleSheet.create({
         alignItems:"center",
         width: "auto",
         height:80,
+    },
+    imgQ:{
+        display:"flex",
+        marginLeft: 50,
+        justifyContent:"center"
     }
 });
 

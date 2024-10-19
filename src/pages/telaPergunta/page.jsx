@@ -72,6 +72,7 @@ export default function Page({ navigation }) {
            perguntaExistente = await verificarPerguntaExistente(numQuestion);
        } while (questaoFeita.includes(numQuestion) || !perguntaExistente);
 
+      //  numQuestion = 21
       //acrescenta a nova questão
       setQuestaoFeita([...questaoFeita, numQuestion]);
 

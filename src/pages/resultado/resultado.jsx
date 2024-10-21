@@ -9,7 +9,7 @@ export default function Resultado({navigation}) {
   const [resultados, setResultados] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [message, setMessage] = useState("eu");
+  const [message, setMessage] = useState("");
 
 
   const convertDate = (dateString) => {
@@ -32,8 +32,8 @@ export default function Resultado({navigation}) {
   useEffect(() => {
     const fetchResultados = async () => {
       try {
-        const dataResult = await apiGet('/resultados'); 
-        if(dataResult == 0){
+        const dataResult = await apiGet('/resultados');
+        if(dataResult == 0 || dataResult == null ){
           setMessage("Nenhuma prova ainda respondida! ")
         }
         setResultados(dataResult);

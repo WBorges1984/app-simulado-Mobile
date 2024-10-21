@@ -88,10 +88,16 @@ export default function ResultadoFinal({ navigation }) {
         provaMinutos = 0
       }else{
         provaMinutos = TestMinutes / 60;
+        
       }
-      console.log(Math.floor(provaMinutos))
       const {nr} = await apiGet("/resultado/provanr")
-      result.prova_nr = nr + 1;
+      console.log("busca nr", nr)
+      if(nr == undefined || nr == 0){
+        result.prova_nr = 1;
+
+      }else{
+        result.prova_nr = nr + 1;
+      }
       result.tempo = Math.floor(provaMinutos);
       result.acertos = resultado.total;
       await apiPost("/resultado", result);
@@ -110,9 +116,19 @@ export default function ResultadoFinal({ navigation }) {
       acertos: 0
     }
     try {
+      if(TestMinutes < 60){
+        provaMinutos = 0
+      }else{
+        provaMinutos = TestMinutes / 60;
+      }
       const {nr} = await apiGet("/resultado/provanr")
-      result.prova_nr = nr + 1;
-      result.tempo = 21;
+      if(nr == undefined){
+        result.prova_nr = 1;
+      }else{
+        result.prova_nr = nr + 1;
+        console.log("**************", result.prova_nr)
+      }
+      result.tempo = Math.floor(provaMinutos);
       result.acertos = resultado.total;
       await apiPost("/resultado", result);
       await apiPut("/truncate/", { tableName: "answers" }); 
@@ -140,10 +156,10 @@ export default function ResultadoFinal({ navigation }) {
       <View style={styles.quadroPerguntas}>
         <View style={styles.linhaQuadro}>
           {answers &&
-            answers.map((item) => {
+            answers.map((item, index) => {
               return (
                 <ButtonResultado
-                key={item.id}
+                key={index}
                   onPress={() => getAnswersNumber(item.question_id, item.pagina)}
                   nr={item.pagina}
                   certo={item.options.length}

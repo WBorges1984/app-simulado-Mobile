@@ -40,11 +40,13 @@ export default function Page({ navigation }) {
     if (provaNr == "") {
       const  nr  = await apiGet("/resultado/provanr");
       console.log("inicio", nr)
-        if (nr == null || nr == '0') {
-          console.log("nr recebe 1 ", provaNr)
-          provaNr = 1;
+        if (nr == null || nr == 0) {
+          console.log("nr recebe 1 ", nr)
+          setProvaNr( 1)
+          console.log("fim  ", provaNr)
         }
       setProvaNr(nr + 1);
+
     }
   };
 
@@ -147,7 +149,7 @@ export default function Page({ navigation }) {
   async function getFirstAnswers() {
     const idFirst = await apiGet("/answers/first");
     return idFirst.question_id;
-}
+  }
 
 async function corrigir(clock) {
   if(clock === true){

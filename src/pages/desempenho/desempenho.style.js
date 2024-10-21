@@ -71,6 +71,16 @@ const styles = StyleSheet.create({
     },
     mediaProb:{
         marginTop: 50
+    },
+    message:{
+        flex: 1,
+    },
+    textMessage:{
+        fontSize: FONT_SIZE[20],
+        backgroundColor:COLORS.greenLight,
+        borderRadius: 10,
+        color: COLORS.white,
+        padding: 10
     }
 }); 
 

@@ -24,6 +24,7 @@ export default function Desempenho({navigation}) {
   const [numQuetionsRight, setNumQuetionsRight] = useState(0);
   const [mediaSimples, setMediaSimples] = useState(0);
   const [probabilidade, setProbabilidade] = useState(0);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchResultados = async () => {
@@ -31,7 +32,7 @@ export default function Desempenho({navigation}) {
         const dataResult = await apiGet('/resultados');
         
         setResultados(dataResult);
-
+        if(dataResult.length != undefined){
         //quantidade de provas//
         setQtdProvas(dataResult.length);
 
@@ -64,7 +65,9 @@ export default function Desempenho({navigation}) {
         
         setMediaSimples((right / dataResult.length) * 100);
         setProbabilidade((rightUn / (dataResult.length * 30)) * 100);
-
+      }else{
+        setMessage("Nenhuma prova ainda respondida! ")
+      }
 
       } catch (err) {
         setError('Erro ao buscar resultados');
@@ -117,7 +120,11 @@ export default function Desempenho({navigation}) {
             <Text style={styles.varRed}>{numQuetionsWrong}</Text>
             <Text style={styles.texto}> erros.</Text>
         </View>
-        
+        {message && 
+          <View style={styles.message}>
+            <Text style={styles.textMessage}> {message}</Text>
+          </View>
+        }
       </View>
 
       <View style={styles.mediaProb}> 

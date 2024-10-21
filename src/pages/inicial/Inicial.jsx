@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
 import React from "react";
 import styles from "./inicialStyle";
 import logo from "../../assets/cart.png";
@@ -12,12 +12,15 @@ export default function Inicial({navigation}) {
       <Image source={logo} style={styles.logo}/>
       <View style={styles.buttons}>
         <View style={styles.btn}>
-          <Button texto={"Simulado"} />
-          <Button texto={"Simulado"} textoErro={"Com erros"}/>
+          <Button texto={"Simulado"} onPress={()=>Alert.alert("Deverá estar logado para utilizar!", 
+                                                              "Para se cadastrar é apenas nome, emal e senha ")}/>
+          <Button texto={"Simulado"} textoErro={"Com erros"} onPress={()=>Alert.alert("Ainda será implementado.")}/>
         </View>
         <View style={styles.btn}>
-          <Button texto={"Desempenho"} />
-          <Button texto={"Resultado"} />
+          <Button texto={"Desempenho"} onPress={()=>Alert.alert("Deverá estar logado para utilizar!", 
+                                                              "Para se cadastrar é apenas nome, emal e senha ")}/>
+          <Button texto={"Resultado"} onPress={()=>Alert.alert("Deverá estar logado para utilizar!", 
+                                                              "Para se cadastrar é apenas nome, emal e senha ")}/>
         </View>
       </View>
       <View style={styles.btnBottom}>

@@ -18,7 +18,12 @@ export const apiGet = async (endpoint) => {
     if (!response.ok) {
       throw new Error(`Erro HTTP! status: ${response.status}`);
     }
-    const data = await response.json();
+    let data  = null;
+    if(response.status == 204){
+      data = 0
+    }else{
+      data = await response.json();
+    }
     
     return data;
   } catch (error) {

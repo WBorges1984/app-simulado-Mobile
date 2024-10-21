@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
 import React, { useContext } from "react";
 import styles from "./inicialLogado.Style";
 import logo from "../../assets/cart.png";
@@ -25,7 +25,7 @@ export default function InicialLogado({navigation}) {
       <View style={styles.buttons}>
         <View style={styles.btn}>
           <Button texto={"Simulado"} onPress={()=> navigation.navigate("pagePergunta")}/>
-          <Button texto={"Simulado"} textoErro={"Com erros"}/>
+          <Button texto={"Simulado"} onPress={()=>Alert.alert("Ainda será implemetado")} textoErro={"Com erros"}/>
         </View>
         <View style={styles.btn}>
           <Button texto={"Desempenho"} onPress={()=> navigation.navigate("Desempenho")}/>

@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, Button } from "react-native";
+import { View, Text, Image, TouchableOpacity, Button, ScrollView } from "react-native";
 import styles from "./resultadoFinal.style.js";
 import logo from "../../assets/cart.png";
 import { useEffect, useState } from "react";
@@ -20,10 +20,13 @@ export default function ResultadoFinal({ navigation }) {
   const [questaoText, setQuestaoText] = useState('')
   const [pagina, setPagina] = useState(0);
   const [resultado, setResultado] = useState({});
+  const [minutos, setMinutos] = useState(0);
+
   
   const route = useRoute();
   const { params } = route;
   const questionId = params.params;
+  const TestMinutes = params.minutes;
 
   async function getAnswersNumber(id, pagina) {
     setPagina(pagina)
@@ -78,10 +81,18 @@ export default function ResultadoFinal({ navigation }) {
       tempo: 0, 
       acertos: 0
     }
+    let provaMinutos =0;
     try {
+
+      if(TestMinutes < 60){
+        provaMinutos = 0
+      }else{
+        provaMinutos = TestMinutes / 60;
+      }
+      console.log(Math.floor(provaMinutos))
       const {nr} = await apiGet("/resultado/provanr")
       result.prova_nr = nr + 1;
-      result.tempo = 21;
+      result.tempo = Math.floor(provaMinutos);
       result.acertos = resultado.total;
       await apiPost("/resultado", result);
       await apiPut("/truncate/", { tableName: "answers" }); 
@@ -106,11 +117,11 @@ export default function ResultadoFinal({ navigation }) {
       await apiPost("/resultado", result);
       await apiPut("/truncate/", { tableName: "answers" }); 
       navigation.navigate("pagePergunta")
+      navigation.replace('pagePergunta');
     } catch (error) {
       console.error(error)
     }
   }
-
 
 
   return (
@@ -141,7 +152,7 @@ export default function ResultadoFinal({ navigation }) {
             })}
         </View>
       </View>
-
+      <ScrollView style={styles.scrollView}>      
       <View style={styles.containerConteudo}>
          <View style={styles.pergunta}>
                     <Text style={styles.nrPergunta}>{pagina}</Text>
@@ -169,7 +180,7 @@ export default function ResultadoFinal({ navigation }) {
                   </TouchableOpacity> : ''
                 }
       </View>
-
+      </ScrollView>
       <View style={styles.btnBottom}>
         <ButtonBottom
           colorBackTrans

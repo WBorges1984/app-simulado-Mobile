@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: COLORS.white,
-        paddingTop:60,
+        paddingTop:30,
         paddingLeft: 10,
         paddingRight: 10,
     },
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     containerConteudo:{
         paddingRight: 45,
-        marginTop: 50
+        marginTop: 45
     },
     nrPergunta:{
         width: 35,
@@ -157,6 +157,15 @@ const styles = StyleSheet.create({
         position:"static",
         alignItems:"center"
     },
+    scrollView: {
+        width:"auto",
+        // flexWrap:"wrap",
+        marginBottom:70,
+        paddingRight: 10
+
+            // backgroundColor: 'pink',
+             //marginHorizontal: 0,
+          },
     
 });
 

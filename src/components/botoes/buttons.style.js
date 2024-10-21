@@ -8,10 +8,11 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"space-around",
+        marginBottom:10
 
     },
     btn:{
-        marginTop: 30
+        // marginTop: 30
     }
 
 })

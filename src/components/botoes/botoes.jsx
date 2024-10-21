@@ -1,9 +1,9 @@
 import { View } from 'react-native';
 import ButtonBottom from '../ButtonBottom/ButtonBottom.jsx';
 import styles from  './buttons.style.js'
-export default function Buttons({ proximaPergunta, corrigir, disable, FinalyNewQuestion }) {
+export default function Buttons({ proximaPergunta, Finaly, disable, FinalyNewQuestion }) {
   return (
-    <View style={styles.btnBottom}>
+    <View>
       <View style={styles.btnPar}>
         {/* <View style={styles.btn}>
           <ButtonBottom colorBackTrans textBlue fullW texto="Anterior" />
@@ -12,7 +12,7 @@ export default function Buttons({ proximaPergunta, corrigir, disable, FinalyNewQ
           <ButtonBottom disable={disable} onPress={proximaPergunta} colorBackTrans textBlue fullW texto="Próximo" />
         </View>
         <View style={styles.btn}>
-          <ButtonBottom onPress={corrigir} colorBackTrans textBlue fullW texto="Corrigir" />
+          <ButtonBottom onPress={Finaly} colorBackTrans textBlue fullW texto="Corrigir" />
         </View>
         <View style={styles.btn}>
           <ButtonBottom onPress={FinalyNewQuestion} colorBackBlue textWhite fullW texto="Nova Prova" />

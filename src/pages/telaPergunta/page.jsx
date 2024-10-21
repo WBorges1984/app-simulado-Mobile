@@ -15,7 +15,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Page({ navigation }) {
   const [questao, setQuestao] = useState("");
   const [questaoGet, setQuestaoGet] = useState([]);
-  const { userData } = useContext(AuthContext);
+  const { userData, testMinutes } = useContext(AuthContext);
   const { image_url } = questao;
   const [proxima, setProxima] = useState(0);
   const [nrQuestao, setNrQuestao] = useState(1);
@@ -26,11 +26,9 @@ export default function Page({ navigation }) {
   const [provaFlash, setProvaFlash] = useState([{}]);
   const [provaNr, setProvaNr] = useState("");
   const [disable, setDisable] = useState(false);
+  // const [clock, setClock] = useState(false)
 
   const user = userData.nome;
-
-  //sql verificar resposta correta-> select option_letter from options where question_id= 2 and id = 7
-  //sql pega resposta correta-> select * from options where question_id= 2 and option_letter = 'A'
 
   useEffect(() => {
     if (userData === "") {
@@ -48,6 +46,8 @@ export default function Page({ navigation }) {
       setProvaNr(nr + 1);
     }
   };
+
+
 
   useEffect(() => {
     //verifica nr da prova e adiciona em provaNr
@@ -72,7 +72,7 @@ export default function Page({ navigation }) {
            perguntaExistente = await verificarPerguntaExistente(numQuestion);
        } while (questaoFeita.includes(numQuestion) || !perguntaExistente);
 
-      //  numQuestion = 21
+       //numQuestion = 36
       //acrescenta a nova questão
       setQuestaoFeita([...questaoFeita, numQuestion]);
 
@@ -121,6 +121,7 @@ export default function Page({ navigation }) {
   };
 
   function proximaPergunta() {
+    console.log(testMinutes)
     if (selectedOption == undefined || provaFlash == undefined) {
       //valida se selecionou alguma pergunta
       return Alert.alert("Precisa selecionar uma opção.");
@@ -147,7 +148,17 @@ export default function Page({ navigation }) {
     return idFirst.question_id;
 }
 
-async function corrigir() {
+async function corrigir(clock) {
+  if(clock === true){
+    const idFirst = await getFirstAnswers(); // Aguarda a resposta da função assíncrona
+    
+    // Certifique-se de que 'idFirst' seja um número antes de passar para a navegação
+    navigation.navigate("resultadoFinal", {
+        params: idFirst, // Passe o question_id diretamente
+        minutes: testMinutes, 
+    });
+    
+  }else{
 
   if (selectedOption == undefined || provaFlash == undefined) {
    return Alert.alert("Você deve selecionar uma opção")
@@ -167,24 +178,31 @@ async function corrigir() {
           text: "Sim",
           onPress: async () => {
             const idFirst = await getFirstAnswers(); // Aguarda a resposta da função assíncrona
-            
-            // Certifique-se de que 'idFirst' seja um número antes de passar para a navegação
-            navigation.navigate("resultadoFinal");
+    
+          // Certifique-se de que 'idFirst' seja um número antes de passar para a navegação
+          navigation.navigate("resultadoFinal", {
+            params: idFirst, // Passe o question_id diretamente
+            minutes: testMinutes,
+          });
           },
         },
+
       ],
       { cancelable: false }
     );
 
   }
-    const idFirst = await getFirstAnswers(); // Aguarda a resposta da função assíncrona
+
+  if(nrQuestao == 30){
+  const idFirst = await getFirstAnswers(); // Aguarda a resposta da função assíncrona
     
     // Certifique-se de que 'idFirst' seja um número antes de passar para a navegação
     navigation.navigate("resultadoFinal", {
-        params: idFirst, // Passe o question_id diretamente
+      params: idFirst, // Passe o question_id diretamente
+      minutes: testMinutes,
     });
-  
-  
+  }
+}
 }
 
 async function FinalyNewQuestion(){
@@ -218,11 +236,22 @@ async function FinalyNewQuestion(){
   }
 }
 
+
+function StartStopClock(){
+  corrigir(true)
+}
+
+function Finaly(){
+  corrigir(false)
+}
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <Image source={logo} style={styles.logo} />
-        <Timer />
+        <View style={styles.vCronometro}>
+          <Timer StartStopClock={StartStopClock}/>
+        </View>
         <View style={styles.containerConteudo}>
           <ScrollView style={styles.scrollView}>
             <Question nrQuestao={nrQuestao} questionText={questao.question_text} imageUrl={image_url} />
@@ -230,7 +259,8 @@ async function FinalyNewQuestion(){
           </ScrollView>
         </View>
       </ScrollView>
-      <Buttons disable={disable} FinalyNewQuestion={FinalyNewQuestion} proximaPergunta={proximaPergunta} corrigir={corrigir} />
+      <Buttons disable={disable} FinalyNewQuestion={FinalyNewQuestion} 
+              proximaPergunta={proximaPergunta} Finaly={Finaly} />
     </View>
   );
 }

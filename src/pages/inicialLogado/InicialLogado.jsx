@@ -10,7 +10,7 @@ import { AuthContext } from "../../context/AuthProvider";
 export default function InicialLogado({navigation}) {
   const {userData, login} = useContext(AuthContext);
   const nome = userData.nome;
-  console.log(userData)
+  // console.log(userData)
   function Logof(){
 
     login('')

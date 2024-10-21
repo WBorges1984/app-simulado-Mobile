@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
         alignItems:"flex-end",
         position: "absolute",
         right: 0,
-        top: 105,
-        paddingRight: 10,
+        top: 50,
+        paddingRight: 15,
         
     },
     pergunta:{

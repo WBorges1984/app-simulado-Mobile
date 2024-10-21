@@ -38,11 +38,12 @@ export default function Page({ navigation }) {
 
   const getNrProva = async () => {
     if (provaNr == "") {
-      const { nr } = await apiGet("/resultado/provanr");
-      //console.log(nr)
-      if (nr == null || nr == 0) {
-        provaNr = 1;
-      }
+      const  nr  = await apiGet("/resultado/provanr");
+      console.log("inicio", nr)
+        if (nr == null || nr == '0') {
+          console.log("nr recebe 1 ", provaNr)
+          provaNr = 1;
+        }
       setProvaNr(nr + 1);
     }
   };

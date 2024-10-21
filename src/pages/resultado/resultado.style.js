@@ -84,6 +84,16 @@ const styles = StyleSheet.create({
     flat:{
         marginBottom: 10,
         marginTop: 10
+    },
+    message:{
+        flex: 1,
+    },
+    textMessage:{
+        fontSize: FONT_SIZE[20],
+        backgroundColor:COLORS.greenLight,
+        borderRadius: 10,
+        color: COLORS.white,
+        padding: 10
     }
 });
 

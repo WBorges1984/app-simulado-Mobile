@@ -9,6 +9,8 @@ export default function Resultado({navigation}) {
   const [resultados, setResultados] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [message, setMessage] = useState("eu");
+
 
   const convertDate = (dateString) => {
     const date = new Date(dateString);
@@ -30,8 +32,10 @@ export default function Resultado({navigation}) {
   useEffect(() => {
     const fetchResultados = async () => {
       try {
-        const dataResult = await apiGet('/resultados');
-        
+        const dataResult = await apiGet('/resultados'); 
+        if(dataResult == 0){
+          setMessage("Nenhuma prova ainda respondida! ")
+        }
         setResultados(dataResult);
       } catch (err) {
         setError('Erro ao buscar resultados');
@@ -70,12 +74,21 @@ export default function Resultado({navigation}) {
   return (
     <View style={styles.container}>
       <Image source={logo} style={styles.logo} />
-      <Text style={styles.texto}>Resultado1</Text>
+      <Text style={styles.texto}>Resultado</Text>
+      
       <FlatList style={styles.flat}
         data={resultados}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
+
+      {message && 
+        <View style={styles.message}>
+          <Text style={styles.textMessage}> {message}</Text>
+        </View>
+      }
+      
+    
       <View style={styles.btn}>
         <ButtonBottom  colorBackBlue texto="Menu principal" textWhite fullW onPress={()=>navigation.navigate("InicialLogado")}/>
       </View>

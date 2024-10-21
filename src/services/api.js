@@ -7,6 +7,7 @@ import { BASE_URL } from '@env';
 
 // Função GET
 export const apiGet = async (endpoint) => {
+  
   try {
     const response = await fetch(`${URL}${endpoint}`, {
       method: 'GET',
@@ -21,6 +22,7 @@ export const apiGet = async (endpoint) => {
     
     return data;
   } catch (error) {
+    
     console.error('Erro na requisição GET:', error);
     throw error;
   }

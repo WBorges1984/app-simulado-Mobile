@@ -15,31 +15,28 @@ export default function ValidacaoEmail({ navigation, user }) {
   const [randomNumber, setRandomNumber] = useState('');
   const [randomNumber2, setRandomNumber2] = useState('');
   const [codigoDigitado, setCodigoDigitado] = useState('');
+  const [codigoRecebido, setCodigoRecebido] = useState('');
+
 
 
   useEffect(()=>{
-
-    const generateRandomNumber = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+    const enviarEmail = async () => {
+      const endpoint = `/validaEmail/${email}`;
+      const body = {
+        // Qualquer dado adicional que precise ser enviado
+        subject: 'Validação de Email',
+      };
+    
+      try {
+        const response = await apiPost(endpoint, body);
+        console.log('Resposta do servidor:', response);
+        setCodigoRecebido(response.code)
+      } catch (error) {
+        console.error('Erro ao enviar email:', error.message);
+      }
     };
 
-    const handleGenerate = () => {
-      // Gera dois números aleatórios de três dígitos
-      const part1 = generateRandomNumber(100, 999); // Primeira parte (ex: 658)
-      const part2 = generateRandomNumber(100, 999); // Segunda parte (ex: 745)
-  
-      // Define o número no formato "XXX-XXX"
-      setRandomNumber(`${part1}-${part2}`);
-      setRandomNumber2(`${part1}${part2}`);
-
-
-    };
-    
-    
-
-
-    handleGenerate();
-    
+    enviarEmail();
 
   },[]);
 
@@ -48,6 +45,11 @@ export default function ValidacaoEmail({ navigation, user }) {
     async function Cadastrar(){
 
       try {
+          console.log('Digitado: ', codigoDigitado)
+          console.log('Recebido: ', codigoRecebido)
+        if(codigoDigitado != codigoRecebido){
+          return Alert.alert("Código de verificação errado!")
+        }
 
         const postData = {"nome": nome, "email": email, "senha":senha}
     
@@ -72,7 +74,7 @@ export default function ValidacaoEmail({ navigation, user }) {
       <Text>Validação</Text>
       <View style={styles.input}>
         <InputText label="E-mail" value={email}  />
-        <InputText label="Digite o código" onChangeText={(texto)=>setCodigoDigitado(texto)}/>
+        <InputText label="Digite o código" placeholder={"Digite com os traços"} onChangeText={(texto)=>setCodigoDigitado(texto)}/>
       </View>
       <View style={styles.btn}>
         <ButtonBottom textWhite fullW colorBackBlue texto="Cadastrar" onPress={Cadastrar}/>

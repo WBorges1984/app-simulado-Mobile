@@ -15,9 +15,11 @@ export const apiGet = async (endpoint) => {
         'Content-Type': 'application/json',
       },
     });
+
     if (!response.ok) {
       throw new Error(`Erro HTTP! status: ${response.status}`);
     }
+
     let data  = null;
     if(response.status == 204){
       data = 0
@@ -27,9 +29,7 @@ export const apiGet = async (endpoint) => {
     
     return data;
   } catch (error) {
-    
-    console.error('Erro na requisição GET:', error);
-    throw error;
+    return error
   }
 
 };
@@ -62,6 +62,37 @@ export const apiPost = async (endpoint, body) => {
   } catch (error) {
     console.error(' Erro na requisição POST:', error);
     throw error; // Repassar o erro para ser tratado fora da função
+  }
+};
+
+//função post para validar email
+export const apiPostEmail = async (endpoint, body) => {
+  try {
+    const response = await fetch(`${URL}${endpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body), // Converte o corpo da requisição para JSON
+    });
+
+    // Verifica se a resposta não foi bem-sucedida
+    if (!response.ok) {
+      const errorMessage = await response.text(); // Caso o servidor envie uma mensagem de erro no corpo da resposta
+      throw new Error(`Erro HTTP! status: ${response.status}, mensagem: ${errorMessage}`);
+    }
+
+    // Verifica se o conteúdo retornado é JSON
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const data = await response.json(); // Converte a resposta para JSON
+      return data;
+    } else {
+      throw new Error('Resposta não está em formato JSON'); // Lança erro se não for JSON
+    }
+  } catch (error) {
+    console.error('Erro na requisição POST:', error);
+    throw error; // Lança o erro para que ele possa ser tratado externamente
   }
 };
 

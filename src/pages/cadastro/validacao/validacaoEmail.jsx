@@ -31,6 +31,7 @@ export default function ValidacaoEmail({ navigation, user }) {
         const response = await apiPost(endpoint, body);
         console.log('Resposta do servidor:', response);
         setCodigoRecebido(response.code)
+        Alert.alert("Código enviado", `Código foi encaminhado para o email ${email} verificar também no SPAM ou Lixo Eletrônico.`)
       } catch (error) {
         console.error('Erro ao enviar email:', error.message);
       }
@@ -45,8 +46,6 @@ export default function ValidacaoEmail({ navigation, user }) {
     async function Cadastrar(){
 
       try {
-          console.log('Digitado: ', codigoDigitado)
-          console.log('Recebido: ', codigoRecebido)
         if(codigoDigitado != codigoRecebido){
           return Alert.alert("Código de verificação errado!")
         }
